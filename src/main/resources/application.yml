@@ -15,4 +15,7 @@ spring:
   mvc:
     pathmatch:
       matching-strategy: ant-path-matcher
-        
+  app:
+    messages:
+      saveSuccess: Contact Saved Successfully
+      saveFail: Contact Failed to save        

@@ -43,6 +43,7 @@ public class UserAccountEntity {
 	@UpdateTimestamp
 	@Column(name="updated_date",insertable = false)
 	private LocalDate updatedDate;
+	
 	public int getUserId() {
 		return userId;
 	}
