@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.shruteekatech.usermanagementapp.entities.City;
 import com.shruteekatech.usermanagementapp.entities.Country;
@@ -15,7 +16,7 @@ import com.shruteekatech.usermanagementapp.repositories.CountryRepository;
 import com.shruteekatech.usermanagementapp.repositories.StateRepository;
 import com.shruteekatech.usermanagementapp.repositories.UserRepository;
 import com.shruteekatech.usermanagementapp.service.UserService;
-
+@Service
 public class UserServiceImpl implements UserService{
 	@Autowired
 	private CountryRepository countryRepository;
