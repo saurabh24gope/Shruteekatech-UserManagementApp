@@ -10,6 +10,8 @@ import com.shruteekatech.usermanagementapp.entities.City;
 import com.shruteekatech.usermanagementapp.entities.Country;
 import com.shruteekatech.usermanagementapp.entities.State;
 import com.shruteekatech.usermanagementapp.entities.UserAccountEntity;
+import com.shruteekatech.usermanagementapp.model.Login;
+import com.shruteekatech.usermanagementapp.model.UnlockAccount;
 import com.shruteekatech.usermanagementapp.model.User;
 import com.shruteekatech.usermanagementapp.repositories.CityRepository;
 import com.shruteekatech.usermanagementapp.repositories.CountryRepository;
@@ -63,6 +65,53 @@ public class UserServiceImpl implements UserService{
 		
 		return null;
 	}
+
+	@Override
+	public String loginCheck(Login login) {
+		String email = login.getEmail();
+		String password = login.getPassword();
+		UserAccountEntity entity = userRepository.findByEmailAndPassword(email, password);
+		if(entity!=null) {
+			if(entity.getAccStatus().equals("LOCKED")) {
+				return "Your Account is Locked";
+			}
+			else {
+				return "Login Success";
+			}
+		}
+		return "Invalid Credentials";
+	}
+
+	@Override
+	public boolean unlockAccount(UnlockAccount unlockAccoount) {
+		
+		String tempPwd = unlockAccoount.getTempPwd();
+		String email = unlockAccoount.getEmail();
+		UserAccountEntity user = userRepository.findByEmailAndPassword(email,tempPwd);
+	    if(user!=null) {
+	    	user.setAccStatus("UNLOCKED");
+	        user.setPassword(unlockAccoount.getNewPwd());
+	        userRepository.save(user);
+	        return true;
+	    }
+	    else {
+		return false;
+	}
+	    }
+
+	@Override
+	public String forgotPwd(String email) {
+		UserAccountEntity findByEmail = userRepository.findByEmail(email);
+		if(findByEmail!=null) {
+			return "password is send to your registered email id";
+		}
+		else {
+			return "mail is not registered please register first";
+		}
+		
+		
+	}
 	
 
 }
+

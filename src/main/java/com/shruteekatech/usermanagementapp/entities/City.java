@@ -2,17 +2,19 @@ package com.shruteekatech.usermanagementapp.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 
 @Entity
 @Table(name="city_master")
 public class City {
+	@Id
 	@Column(name="city_id")
 	private int cityId;
 	@Column(name="city_name")
-	private int stateName;
-	@Column(name="city_stateid")
+	private String cityName;
+	@Column(name="state_id")
 	private int stateId;
 	public int getCityId() {
 		return cityId;
@@ -20,11 +22,11 @@ public class City {
 	public void setCityId(int cityId) {
 		this.cityId = cityId;
 	}
-	public int getStateName() {
-		return stateName;
+	public String getCityName() {
+		return cityName;
 	}
-	public void setStateName(int stateName) {
-		this.stateName = stateName;
+	public void setCityName(String cityName) {
+		this.cityName = cityName;
 	}
 	public int getStateId() {
 		return stateId;
@@ -34,9 +36,8 @@ public class City {
 	}
 	@Override
 	public String toString() {
-		return "City [cityId=" + cityId + ", stateName=" + stateName + ", stateId=" + stateId + "]";
+		return "City [cityId=" + cityId + ", cityName=" + cityName + ", stateId=" + stateId + "]";
 	}
 	
 	
-
 }

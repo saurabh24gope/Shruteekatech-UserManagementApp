@@ -6,9 +6,10 @@ import java.util.Map;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
+
 @Configuration
 @EnableConfigurationProperties
-@ConfigurationProperties(prefix = "app")
+@ConfigurationProperties(prefix="app1")
 public class AppProperties {
 	
 	private Map<String,String> messages = new HashMap<String, String>();

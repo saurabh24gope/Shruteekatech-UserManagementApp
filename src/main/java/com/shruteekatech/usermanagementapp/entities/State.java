@@ -14,7 +14,7 @@ public class State {
 	@Column(name="state_name")
 	private String stateName;
 	@Column(name="country_id")
-	private int CountryId;
+	private int countryId;
 	public int getStateId() {
 		return stateId;
 	}
@@ -28,16 +28,15 @@ public class State {
 		this.stateName = stateName;
 	}
 	public int getCountryId() {
-		return CountryId;
+		return countryId;
 	}
 	public void setCountryId(int countryId) {
-		CountryId = countryId;
+		this.countryId = countryId;
 	}
 	@Override
 	public String toString() {
-		return "State [stateId=" + stateId + ", stateName=" + stateName + ", CountryId=" + CountryId + "]";
+		return "State [stateId=" + stateId + ", stateName=" + stateName + ", countryId=" + countryId + "]";
 	}
-	
 	
 
 }
